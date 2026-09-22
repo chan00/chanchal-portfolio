@@ -36,7 +36,7 @@ export function initialFX() {
   // Hero heading character-split animation
   // ─────────────────────────────────────
   // Splits h3 (greeting), h2 (sub-title), and h1 (main name) into chars/lines
-  var landingText = new SplitText(
+  const landingText = new SplitText(
     [".landing-info h3", ".landing-intro h2", ".landing-intro h1"],
     {
       type: "chars,lines",
@@ -63,10 +63,10 @@ export function initialFX() {
   // Descriptor lines (looping text pairs)
   // ─────────────────────────────────────
   // Shared SplitText config for the rotating descriptor lines
-  let TextProps = { type: "chars,lines", linesClass: "split-h2" };
+  const TextProps = { type: "chars,lines", linesClass: "split-h2" };
 
   // First pair of descriptor texts
-  var landingText2 = new SplitText(".landing-h2-info", TextProps);
+  const landingText2 = new SplitText(".landing-h2-info", TextProps);
   gsap.fromTo(
     landingText2.chars,
     { opacity: 0, y: 80, filter: "blur(5px)" },
@@ -107,9 +107,9 @@ export function initialFX() {
   );
 
   // Second set of descriptor texts used for the alternating loop
-  var landingText3 = new SplitText(".landing-h2-info-1", TextProps);
-  var landingText4 = new SplitText(".landing-h2-1", TextProps);
-  var landingText5 = new SplitText(".landing-h2-2", TextProps);
+  const landingText3 = new SplitText(".landing-h2-info-1", TextProps);
+  const landingText4 = new SplitText(".landing-h2-1", TextProps);
+  const landingText5 = new SplitText(".landing-h2-2", TextProps);
 
   // Start infinite text-swap loops between each pair of descriptors
   LoopText(landingText2, landingText3);
@@ -133,7 +133,7 @@ export function initialFX() {
  * @param Text2 - The second SplitText instance (off-screen initially).
  */
 function LoopText(Text1: SplitText, Text2: SplitText) {
-  var tl = gsap.timeline({ repeat: -1, repeatDelay: 1 });
+  const tl = gsap.timeline({ repeat: -1, repeatDelay: 1 });
 
   const delay = 4; // seconds before first swap starts
   const delay2 = delay * 2 + 1; // seconds before second swap starts

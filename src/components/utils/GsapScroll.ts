@@ -112,7 +112,7 @@ export function setCharTimeline(
   });
 
   // "spine005" is the neck bone in the character rig – used to tilt the head
-  let neckBone = character?.getObjectByName("spine005");
+  const neckBone = character?.getObjectByName("spine005");
 
   // =====================
   // Desktop animations

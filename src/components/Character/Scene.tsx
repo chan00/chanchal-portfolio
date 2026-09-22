@@ -29,8 +29,8 @@ const Scene = () => {
     const existingCanvases = canvasDiv.current.querySelectorAll("canvas");
     existingCanvases.forEach((c) => c.remove());
 
-    let rect = canvasDiv.current.getBoundingClientRect();
-    let container = { width: rect.width, height: rect.height };
+    const rect = canvasDiv.current.getBoundingClientRect();
+    const container = { width: rect.width, height: rect.height };
     const aspect = container.width / container.height;
     const scene = sceneRef.current;
 
@@ -58,7 +58,7 @@ const Scene = () => {
     const clock = new THREE.Clock();
 
     const light = setLighting(scene);
-    let progress = setProgress((value) => setLoading(value));
+    const progress = setProgress((value) => setLoading(value));
     const { loadCharacter } = setCharacter(renderer, scene, camera);
 
     // Named resize handler so we can properly remove it
