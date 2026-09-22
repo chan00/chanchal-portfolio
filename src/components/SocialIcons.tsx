@@ -8,6 +8,7 @@ import "./styles/SocialIcons.css";
 import { TbNotes } from "react-icons/tb";
 import { useEffect } from "react";
 import HoverLinks from "./HoverLinks";
+import { smoother } from "./Navbar";
 
 const SocialIcons = () => {
   useEffect(() => {
@@ -80,7 +81,24 @@ const SocialIcons = () => {
           </a>
         </span>
       </div>
-      <a className="resume-button" href="#">
+      <a
+        className="resume-button"
+        href="#contact"
+        onClick={(e) => {
+          e.preventDefault();
+          fetch("/resume.pdf", { method: "HEAD" })
+            .then((res) => {
+              if (res.ok) {
+                window.open("/resume.pdf", "_blank");
+              } else if (smoother) {
+                smoother.scrollTo("#contact", true, "top top");
+              }
+            })
+            .catch(() => {
+              if (smoother) smoother.scrollTo("#contact", true, "top top");
+            });
+        }}
+      >
         <HoverLinks text="RESUME" />
         <span>
           <TbNotes />

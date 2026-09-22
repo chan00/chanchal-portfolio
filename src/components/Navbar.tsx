@@ -27,10 +27,10 @@ const Navbar = () => {
     links.forEach((elem) => {
       let element = elem as HTMLAnchorElement;
       element.addEventListener("click", (e) => {
-        if (window.innerWidth > 1024) {
-          e.preventDefault();
-          let elem = e.currentTarget as HTMLAnchorElement;
-          let section = elem.getAttribute("data-href");
+        e.preventDefault();
+        let elem = e.currentTarget as HTMLAnchorElement;
+        let section = elem.getAttribute("data-href");
+        if (section && smoother) {
           smoother.scrollTo(section, true, "top top");
         }
       });
@@ -42,7 +42,15 @@ const Navbar = () => {
   return (
     <>
       <div className="header">
-        <a href="/#" className="navbar-title" data-cursor="disable">
+        <a
+          href="/#"
+          className="navbar-title"
+          data-cursor="disable"
+          onClick={(e) => {
+            e.preventDefault();
+            if (smoother) smoother.scrollTo(0, true, "top top");
+          }}
+        >
           CB
         </a>
         <a
