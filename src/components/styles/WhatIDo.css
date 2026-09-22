@@ -240,7 +240,8 @@
   height: 100%;
   transition: 0.5s;
   max-width: 0%;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: visible;
   opacity: 0.8;
   animation: whatBorders 1.2s 1 forwards;
 }
@@ -250,6 +251,7 @@
   left: 50%;
   transform: translateX(-50%);
   width: 450px;
+  overflow: visible;
 }
 
 .what-border2 {
