@@ -27,3 +27,6 @@ dist-ssr
 
 backup/
 .env
+
+# 3D models (use npm run encrypt-model to generate character.enc)
+public/models/*.glb
