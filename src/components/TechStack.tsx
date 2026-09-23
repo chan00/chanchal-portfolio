@@ -108,7 +108,7 @@ function SphereGeo({
 }: SphereProps) {
   const api = useRef<RapierRigidBody | null>(null);
 
-  useFrame((_state, delta) => {
+  useFrame((_state: any, delta: number) => {
     if (!isActive || !api.current) return;
     delta = Math.min(0.1, delta);
     const impulse = vec
@@ -160,7 +160,7 @@ type PointerProps = {
 function Pointer({ vec = new THREE.Vector3(), isActive }: PointerProps) {
   const ref = useRef<RapierRigidBody>(null);
 
-  useFrame(({ pointer, viewport }) => {
+  useFrame(({ pointer, viewport }: any) => {
     if (!isActive) return;
     const targetVec = vec.lerp(
       new THREE.Vector3(
@@ -235,7 +235,7 @@ const TechStack = () => {
         shadows
         gl={{ alpha: true, stencil: false, depth: false, antialias: false }}
         camera={{ position: [0, 0, 20], fov: 32.5, near: 1, far: 100 }}
-        onCreated={(state) => (state.gl.toneMappingExposure = 1.5)}
+        onCreated={(state: any) => (state.gl.toneMappingExposure = 1.5)}
         className="tech-canvas"
       >
         <ambientLight intensity={1} />
