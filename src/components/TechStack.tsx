@@ -26,7 +26,7 @@ const webpUrls = [
 // New logo/icon textures that need canvas treatment
 const logoUrls = [
   "/images/autocad-icon.png",
-  "/images/autodes-3ds-max-icon.png",
+  "/images/autodesk-3ds-max-icon.png",
   "/images/autodesk-revit-icon.png",
   "/images/blender-icon.png",
   "/images/sketchup-logo.png",
@@ -74,6 +74,10 @@ function createLogoCanvasTexture(url: string): THREE.CanvasTexture {
     texture.needsUpdate = true;
   };
 
+  img.onerror = () => {
+    console.warn("Failed to load texture for TechStack:", url);
+  };
+
   return texture;
 }
 
@@ -105,10 +109,10 @@ function SphereGeo({
   const api = useRef<RapierRigidBody | null>(null);
 
   useFrame((_state, delta) => {
-    if (!isActive) return;
+    if (!isActive || !api.current) return;
     delta = Math.min(0.1, delta);
     const impulse = vec
-      .copy(api.current!.translation())
+      .copy(api.current.translation())
       .normalize()
       .multiply(
         new THREE.Vector3(
@@ -118,7 +122,7 @@ function SphereGeo({
         )
       );
 
-    api.current?.applyImpulse(impulse, true);
+    api.current.applyImpulse(impulse, true);
   });
 
   return (
@@ -186,10 +190,10 @@ const TechStack = () => {
 
   useEffect(() => {
     const handleScroll = () => {
+      const workEl = document.getElementById("work");
+      if (!workEl) return;
       const scrollY = window.scrollY || document.documentElement.scrollTop;
-      const threshold = document
-        .getElementById("work")!
-        .getBoundingClientRect().top;
+      const threshold = workEl.getBoundingClientRect().top;
       setIsActive(scrollY > threshold);
     };
     document.querySelectorAll(".header a").forEach((elem) => {
