@@ -10,6 +10,7 @@ import {
 import { smoother } from "./Navbar";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollSmoother } from "gsap/ScrollSmoother";
+import { asset } from "../utils/assets";
 import "./styles/Lightbox.css";
 
 interface LightboxProps {
@@ -264,7 +265,7 @@ const Lightbox = ({
         <div className="lightbox-image-container" onWheel={handleWheel}>
           {isVideoMode ? (
             <video
-              src={video}
+              src={asset(video)}
               className="lightbox-video lightbox-image-loaded"
               controls
               autoPlay
@@ -273,7 +274,7 @@ const Lightbox = ({
           ) : (
             images && (
               <img
-                src={images[currentIndex]}
+                src={asset(images[currentIndex])}
                 alt={`Gallery image ${currentIndex + 1}`}
                 className={`lightbox-image ${
                   isLoaded ? "lightbox-image-loaded" : ""

@@ -10,6 +10,7 @@ import {
   CylinderCollider,
   RapierRigidBody,
 } from "@react-three/rapier";
+import { asset } from "../utils/assets";
 
 const textureLoader = new THREE.TextureLoader();
 
@@ -20,7 +21,7 @@ const webpUrls = [
   "/images/mysql.webp",
   "/images/typescript.webp",
   "/images/javascript.webp",
-];
+].map(asset);
 
 // New logo/icon textures that need canvas treatment
 const logoUrls = [
@@ -40,7 +41,7 @@ const logoUrls = [
   "/images/Twinmotion-icon.png",
   "/images/unity-game-engine-icon.png",
   "/images/unreal-engine-icon.png",
-];
+].map(asset);
 
 function createLogoCanvasTexture(url: string): THREE.CanvasTexture {
   const size = 1000;
@@ -255,7 +256,7 @@ const TechStack = () => {
           ))}
         </Physics>
         <Environment
-          files="/models/char_enviorment.hdr"
+          files={asset("/models/char_enviorment.hdr")}
           environmentIntensity={0.5}
           environmentRotation={[0, 4, 2]}
         />

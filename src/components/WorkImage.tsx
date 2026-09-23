@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { MdArrowOutward, MdPlayArrow } from "react-icons/md";
 import { IoImages } from "react-icons/io5";
+import { asset } from "../utils/assets";
 
 interface Props {
   image: string;
@@ -68,7 +69,7 @@ const WorkImage = (props: Props) => {
             <MdPlayArrow />
           </div>
         )}
-        <img src={props.image} alt={props.alt} />
+        <img src={asset(props.image)} alt={props.alt} />
         {isVideo && <video src={video} autoPlay muted playsInline loop></video>}
       </a>
     </div>
