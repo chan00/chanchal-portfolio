@@ -9,24 +9,6 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const projects = [
   {
-    title: "Multiplayer Card Game",
-    category: "Project Based Games",
-    tools: "Next.js, Liveblocks, Supabase, Tailwind CSS, Framer Motion, Lucide React, Vercel",
-    image: "/images/multiplayer-card-game.jpg",
-  },
-  {
-    title: "3D Web Experience",
-    category: "3D interactive scene",
-    tools: "Vite, Three.js, React, Typescript, R3F, Tailwind CSS, R3drei, Leva, Vercel",
-    image: "/images/3d-web-experience.png",
-  },
-  {
-    title: "Art Queensland, Brisbane",
-    category: "Flood Water Simulation",
-    tools: "Unreal Engine, C++, Blueprints, Cesium, 3Ds Max, Azure DevOps, Rest API, Pixel Streaming",
-    image: "/projects/Brisbane.jpg",
-  },
-  {
     title: "Konrad Shaft Fullort, Germany",
     category: "Radioactive Waste Management | PCVR Simulator",
     tools: "NavisWorks, 3Ds Max | Chaos Corona, Unreal Engine | Blueprint | C++, HTC Vive Pro, SteamVR",
@@ -406,7 +388,7 @@ const Work = () => {
                   <div className="carousel-content">
                     <div className="carousel-info">
                       <div className="carousel-number">
-                        <h3>0{index + 1}</h3>
+                        <h3>{String(index + 1).padStart(2, "0")}</h3>
                       </div>
                       <div className="carousel-details">
                         <h4>{project.title}</h4>
